@@ -26,3 +26,8 @@ def predict_properties(smiles):
 
     return desc
 
+# from property_predictor import predict_properties
+
+# smiles = "CC(=O)Oc1ccccc1C(=O)O"
+# props = predict_properties(smiles)
+# print(props)
