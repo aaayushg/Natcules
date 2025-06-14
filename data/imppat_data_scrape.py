@@ -1,7 +1,8 @@
+import csv
+import time
+
 import requests
 from bs4 import BeautifulSoup
-import time
-import csv
 
 base_url = "https://cb.imsc.res.in/imppat/phytochemical-detailedpage/IMPHY{:06d}"
 output_file = "imppat_smiles.csv"

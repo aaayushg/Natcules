@@ -1,10 +1,9 @@
-import pandas as pd
-from rdkit import Chem
-from deepchem.models import load_model
-from deepchem.feat import RDKitDescriptors
-from deepchem.data import NumpyDataset
-import numpy as np
 from pathlib import Path
+
+import pandas as pd
+from deepchem.data import NumpyDataset
+from deepchem.feat import RDKitDescriptors
+from rdkit import Chem
 
 # === Config ===
 INPUT_CSV = "data/enumerated_smiles.csv"
@@ -25,6 +24,7 @@ dataset = NumpyDataset(X=features)
 # === Load pretrained model (or substitute with your own) ===
 # Example: load a local .joblib model
 from joblib import load
+
 model = load("models/solubility/solubility_rf_model.joblib")
 preds = model.predict(features)
 

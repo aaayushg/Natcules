@@ -1,5 +1,7 @@
-import pandas as pd
 import os
+
+import pandas as pd
+
 
 # Define the data_loader module
 def load_natural_medicine_data():

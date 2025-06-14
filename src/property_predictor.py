@@ -1,6 +1,8 @@
 from rdkit import Chem
 from rdkit.Chem import QED
+
 from descriptor_generator import calculate_descriptors
+
 
 def predict_qed(smiles):
     """

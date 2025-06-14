@@ -1,6 +1,7 @@
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 
+
 def calculate_descriptors(smiles):
     """
     Calculate common RDKit-based molecular descriptors.

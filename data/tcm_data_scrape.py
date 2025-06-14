@@ -1,7 +1,8 @@
 import os
-import requests
 import time
+
 import pandas as pd
+import requests
 from rdkit import Chem
 
 # Folder to save .mol2 files

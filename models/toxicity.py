@@ -1,14 +1,15 @@
+# Import DeepTox modules (assumes cloned as 'DeepTox/')
+import sys
+from pathlib import Path
+
 import pandas as pd
 import torch
 from rdkit import Chem
 from torch.utils.data import DataLoader
-from pathlib import Path
 
-# Import DeepTox modules (assumes cloned as 'DeepTox/')
-import sys
 sys.path.append("DeepTox")
-from utils import load_model, get_test_transforms, collate_fn
 from dataset import Tox21
+from utils import collate_fn, get_test_transforms, load_model
 
 # === CONFIG ===
 MODEL_PATH = "DeepTox/models/best_model.pth"

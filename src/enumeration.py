@@ -1,6 +1,7 @@
 from rdkit import Chem
 from rdkit.Chem import BRICS
 
+
 def smiles_to_mol(smiles):
     """
     Convert a SMILES string to an RDKit Mol object.
