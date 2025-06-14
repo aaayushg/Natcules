@@ -1,7 +1,6 @@
 import os
 import requests
 import time
-import os
 import pandas as pd
 from rdkit import Chem
 

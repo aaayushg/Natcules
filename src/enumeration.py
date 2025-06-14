@@ -1,6 +1,5 @@
 from rdkit import Chem
 from rdkit.Chem import BRICS
-from rdkit.Chem import rdchem
 
 def smiles_to_mol(smiles):
     """
