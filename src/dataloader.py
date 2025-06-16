@@ -1,37 +1,38 @@
 import os
-
 import pandas as pd
 
-
-# Define the data_loader module
-def load_natural_medicine_data():
+def load_natural_medicine_data(datasets=["TCM", "IMPPAT"]):
     """
-    Load traditional medicine compound data from CSV files in the main directory.
-    Returns a combined DataFrame with a 'source' column to indicate the origin.
+    Load selected traditional medicine compound data from CSV files.
+    
+    Parameters:
+        datasets (list): List of dataset names to include (e.g., ["TCM", "IMPPAT"])
+    
+    Returns:
+        pd.DataFrame: Combined dataframe with a 'source' column and merged on the ID column.
     """
-    # Define file paths
-    tcm_path = os.path.join("..", "tcm_smiles.csv")
-    imppat_path = os.path.join("..", "imppat_smiles.csv")
+    data_dir = "../data/"
+    available_sources = {
+        "TCM": "tcm_smiles.csv",
+        "IMPPAT": "imppat_smiles.csv",
+    }
     
-    # Load datasets
-    try:
-        tcm_df = pd.read_csv(tcm_path)
-        tcm_df["source"] = "TCM"
-    except FileNotFoundError:
-        tcm_df = pd.DataFrame()
+    dataframes = []
     
-    try:
-        imppat_df = pd.read_csv(imppat_path)
-        imppat_df["source"] = "IMPPAT"
-    except FileNotFoundError:
-        imppat_df = pd.DataFrame()
+    for source in datasets:
+        if source.upper() in available_sources:
+            file_path = os.path.join(data_dir, available_sources[source.upper()])
+            try:
+                df = pd.read_csv(file_path)
+                df["source"] = source.upper()
+                df.columns.values[0] = "ID"  # Rename first column to 'ID'
+                dataframes.append(df)
+            except FileNotFoundError:
+                print(f"File not found for source: {source}")
     
-    # Combine the datasets
-    combined_df = pd.concat([tcm_df, imppat_df], ignore_index=True)
-    
-    return combined_df
-
-# Load data to show output
-# combined_data = load_natural_medicine_data()
-# import ace_tools as tools; tools.display_dataframe_to_user(name="Combined Traditional Medicine Data", dataframe=combined_data)
-
+    # Merge on 'ID' if multiple dataframes, otherwise just return the single one
+    if dataframes:
+        combined_df = pd.concat(dataframes, ignore_index=True)
+        return combined_df
+    else:
+        return pd.DataFrame()  # Return empty if nothing loaded

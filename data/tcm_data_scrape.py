@@ -43,7 +43,7 @@ for filename in os.listdir(mol2_dir):
             mol = Chem.MolFromMol2File(file_path, sanitize=True)
             if mol:
                 smiles = Chem.MolToSmiles(mol)
-                output.append({"filename": filename, "smiles": smiles})
+                output.append({"TCM_ID": filename.split('.')[0], "smiles": smiles})
             else:
                 print(f"Could not parse {filename}")
         except Exception as e:
