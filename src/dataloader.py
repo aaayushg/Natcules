@@ -1,5 +1,7 @@
 import os
+
 import pandas as pd
+
 
 def load_natural_medicine_data(datasets=["TCM", "IMPPAT"]):
     """
