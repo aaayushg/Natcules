@@ -17,6 +17,7 @@ def load_natural_medicine_data(datasets=["TCM", "IMPPAT"]):
     available_sources = {
         "TCM": "tcm_smiles.csv",
         "IMPPAT": "imppat_smiles.csv",
+        "NPASS": "npass_smiles.csv",
     }
     
     dataframes = []
